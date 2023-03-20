@@ -1,5 +1,13 @@
-let num1 = prompt("Digite um número:");
-let num2 = prompt("Digite outro número:");
-num1 = Number(num1);
-num2 = Number(num2);
-alert(`A soma dos números é ${num1 + num2}`);
+let varA = "A";
+let varB = "B";
+let varC = "C";
+let varAA = varA;
+
+varA = varB;
+varB = varC;
+varC = varAA;
+
+//SOLUÇÃO MAIS ATUALIZADA
+// [varA, varB, varC] = [varB, varC, varA]
+
+console.log(varA, varB, varC);
