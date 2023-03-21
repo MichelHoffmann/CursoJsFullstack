@@ -1,15 +1,11 @@
-const nome = window.prompt("Digite o seu nome:");
-document.body.innerHTML += `O seu nome é ${nome} <br />`;
-document.body.innerHTML += `O seu nome tem ${nome.length} letras <br />`;
-document.body.innerHTML += `A segunda letra do  seu nome é ${nome[1]} <br />`;
-document.body.innerHTML += `Qual o primeiro índice da letra "i" do seu nome? ${nome.indexOf(
-  "i"
-)} <br />`;
-document.body.innerHTML += `As últimas 3 letras do seu nome são: ${nome.slice(
-  -3
-)} <br />`;
-document.body.innerHTML += `As palavras do seu nome são: ${nome.split(
-  " "
-)} <br />`;
-document.body.innerHTML += `Seu nome com letras maiúsculas: ${nome.toUpperCase()} <br />`;
-document.body.innerHTML += `Seu nome com minúsculas: ${nome.toLowerCase()} <br />`;
+const num = Number(prompt("Digite um número: "));
+const numeroTitulo = document.getElementById("numero-titulo");
+const texto = document.getElementById("texto");
+
+numeroTitulo.innerHTML = num;
+texto.innerHTML = `<p>Raiz quadrada: ${num ** 0.5} </p>`;
+texto.innerHTML += `<p>${num} é inteiro?: ${Number.isInteger(num)} </p>`;
+texto.innerHTML += `<p>É NaN? ${Number.isNaN(num)} </p>`;
+texto.innerHTML += `<p>Arredondando para baixo: ${Math.floor(num)} </p>`;
+texto.innerHTML += `<p>Arredondando para cima: ${Math.ceil(num)} </p>`;
+texto.innerHTML += `<p>Com duas casa decimais: ${num.toFixed(2)} </p>`;
