@@ -1,13 +1,35 @@
 function meuEscopo() {
   const form = document.querySelector("#form");
-  const peso = document.querySelector("#peso");
-  const altura = document.querySelector("#altura");
 
-  function preventReload(evento) {
-    evento.preventDefault();
-    console.log(`Peso: ${peso.value} <br> Altura: ${altura.value}`);
+  form.addEventListener("submit", function preventReload(e) {
+    e.preventDefault();
+    const inputPeso = e.target.querySelector("#peso");
+    const inputAltura = e.target.querySelector("#altura");
+    const peso = Number(inputPeso.value);
+    const altura = Number(inputAltura.value);
+
+    if (!peso) {
+      setResultado("Peso invalido!", false);
+      return;
+    }
+
+    if (!altura) {
+      setResultado("Altura invalida!", false);
+      return;
+    }
+  });
+
+  function criaP() {
+    const p = document.createElement("p");
+    return p;
   }
 
-  form.addEventListener("submit", preventReload);
+  function setResultado(msg, isValid) {
+    const resultado = document.querySelector("#resultado");
+    resultado.innerHTML = "";
+    const p = criaP();
+    p.innerHTML = msg;
+    resultado.appendChild(p);
+  }
 }
 meuEscopo();
