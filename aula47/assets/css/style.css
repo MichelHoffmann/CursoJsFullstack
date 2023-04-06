@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 :root {
-  --primary-color: rgb(36, 183, 149);
-  --primary-color-darker: rgb(20, 128, 102);
+  --primary-color: rgb(17, 86, 102);
+  --primary-color-darker: rgb(9, 48, 56);
 }
 
 * {
   box-sizing: border-box;
   outline: 0;
-  margin: 0;
 }
 
 body {
@@ -27,20 +26,10 @@ body {
   border-radius: 10px;
 }
 
-.container h1 {
-  padding-bottom: 25px;
-}
-
-form input,
-form label,
-form button {
+form input, form label, form button {
   display: block;
   width: 100%;
   margin-bottom: 10px;
-}
-
-form label span {
-  color: var(--primary-color);
 }
 
 form input {
@@ -68,35 +57,6 @@ form button:hover {
   background: var(--primary-color-darker);
 }
 
-form button:active {
-  background-color: #ffffff;
-  border: 1px solid var(--primary-color);
-}
-
-.section {
-  padding-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.section aside {
-  width: 50%;
-}
-
-.section aside h2 {
-  font-size: 19px;
-}
-
-.section aside p {
-  margin-bottom: 15px;
-}
-
-.container .res.resultado {
-  height: auto;
-  background-color: var(--primary-color);
-  color: #ffffff;
-  padding-left: 15px;
-  font-weight: bold;
-  font-size: 16px;
-  border-radius: 7px;
+.relogio{
+  font-size: 2em;
 }
