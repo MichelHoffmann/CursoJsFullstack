@@ -1,20 +1,36 @@
-let hora = 00;
-let minutos = 00;
-let segundos = 00;
-let relogio = document.querySelector(".relogio");
+function criaHoraDosSegudos(segundos) {
+  const data = new Date(segundos * 1000);
+  return data.toLocaleTimeString("pt-BR", {
+    hour12: false,
+    timeZone: "UTC",
+  });
+}
+
+const relogio = document.querySelector(".relogio");
 const iniciar = document.querySelector(".iniciar");
 const pausar = document.querySelector(".pausar");
 const zerar = document.querySelector(".zerar");
+let segundos = 0;
+let timer;
 
-function atualizarTimer() {
-  relogio.innerHTML = `${hora}:${minutos}:${segundos}`;
+function iniciarTimer() {
+  timer = setInterval(function () {
+    segundos++;
+    relogio.innerHTML = criaHoraDosSegudos(segundos);
+  }, 1000);
+  relogio.classList.remove("pausado");
 }
 
-const timer = setInterval(function () {
-    segundos++;
-    atualizarTimer()
-  }, 1000);
+iniciar.addEventListener("click", iniciarTimer);
 
+pausar.addEventListener("click", function () {
+  clearInterval(timer);
+  relogio.classList.add("pausado");
+});
 
-iniciar.addEventListener("click", timer);
-pausar.addEventListener("click", setTimeout(timer, 1000));
+zerar.addEventListener("click", function () {
+  clearInterval(timer);
+  segundos = 0;
+  relogio.classList.remove("pausado");
+  relogio.innerHTML = "00:00:00";
+});
