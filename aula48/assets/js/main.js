@@ -1,18 +1,20 @@
 const inputTarefa = document.querySelector(".inputTarefa");
 const btnTarefa = document.querySelector(".btnTarefa");
 const tarefas = document.querySelector(".tarefas");
+inputTarefa.focus()
 
 function criaLi() {
   const li = document.createElement("li");
   return li;
 }
 
-function criaBotao() {
-  const btn = document.createElement("button");
-  btn.innerHTML = "Remover";
-  btn.setAttribute("class", "apagar");
-  btn.setAttribute("tittle", "Apagar esta tarefa!");
-  return btn;
+function criaBotao(li) {
+  li.innerText += ''
+  const botaoApagar = document.createElement("button");
+  botaoApagar.innerText = "Apagar";
+  botaoApagar.setAttribute("class", "apagar");
+  botaoApagar.setAttribute("tittle", "Apagar esta tarefa!");
+  li.appendChild(botaoApagar)
 }
 
 function limpaInput() {
@@ -23,10 +25,10 @@ function limpaInput() {
 function criaTarefa(input) {
   const li = criaLi();
   li.innerHTML = input;
-  const btn = criaBotao();
+  criaBotao(li);
   tarefas.appendChild(li);
   li.innerHTML += " ";
-  li.appendChild(btn);
+  salvarTarefas()
 }
 
 btnTarefa.addEventListener("click", function () {
@@ -49,5 +51,31 @@ document.addEventListener("click", function (e) {
   if (el.classList.contains("apagar")) {
     el.parentElement.remove();
     inputTarefa.focus()
+    salvarTarefas()
   }
 });
+
+function salvarTarefas() {
+  const liTarefas = tarefas.querySelectorAll('li')
+  const listaDeTarefas = []
+
+  for (const tarefa of liTarefas) {
+    let tarefaTexto = tarefa.innerText
+    tarefaTexto = tarefaTexto.replace('Apagar', '').trim()
+    listaDeTarefas.push(tarefaTexto)
+  }
+
+  const tarefasJSON = JSON.stringify(listaDeTarefas)
+  localStorage.setItem('tarefas', tarefasJSON)
+
+}
+
+function adicionaTarefasSalvas() {
+  const tarefas = localStorage.getItem('tarefas')
+  const listaDeTarefas = JSON.parse(tarefas)
+
+  for (let tarefa of listaDeTarefas) {
+    criaTarefa(tarefa)
+  }
+}
+adicionaTarefasSalvas()
