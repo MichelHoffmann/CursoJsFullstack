@@ -3,15 +3,8 @@ function ValidaCpf(cpf) {
   this.cpfEnviado = this.cpfEnviado.replace(/\D+/g, "");
 
   this.validaCpfEnviado = function () {
-    if (this.cpfEnviado === undefined || this.cpfEnviado === "") {
-      return "CPF Invalido";
-    }
-  }.bind(this);
-
-  this.verificaQtdDigitos = function () {
-    if (this.cpfEnviado.length !== 11) {
-      return "Faltam digitos no CPF";
-    }
+    if (this.cpfEnviado === undefined || this.cpfEnviado === "") {return "CPF Invalido";}
+    if (this.cpfEnviado.length !== 11) {return "Faltam digitos no CPF";}
   }.bind(this);
 
   let cpfArray = Array.from(this.cpfEnviado.slice(0, -2));
@@ -49,7 +42,6 @@ function ValidaCpf(cpf) {
   }.bind(this);
 
   this.validaCpfEnviado();
-  this.verificaQtdDigitos();
   this.criaDigito(); //Criou o primeiro digito
   this.criaDigito(); //Criou o segundo
   const cpfRecriado = cpfArray.join("");
