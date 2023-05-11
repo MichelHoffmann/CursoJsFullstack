@@ -1,36 +1,54 @@
-class ValidaCpf{
+class ValidaCpf {
   constructor(cpfEnviado) {
-    Object.defineProperty(this, 'cpfEnviado', {
+    Object.defineProperty(this, "cpfEnviado", {
       value: cpfEnviado,
       enumerable: false,
-      writable: true
-    })
+      writable: true,
+    });
   }
 
-  verificaCpfVazio()
-  formataCpf()
-  criaDigito()
-
-  verificaCpfVazio() {
-    if (this.cpfEnviado === undefined) return 'Cpf Invalido'
-    if (this.cpfEnviado === '') return 'Cpf Invalido'
-  }
-  
-  formataCpf () {
-    this.cpfEnviado = this.cpfEnviado.replace(/\D+/g, '')
-    this.cpfArray = this.cpfEnviado.slice(0, -2)
-    return Array.from(this.cpfArray)
+  verificaCpf() {
+    this.cpfEnviado = this.cpfEnviado.replace(/\D+/g, "");
+    this.cpfArray = this.cpfEnviado.slice(0, -2);
+    this.cpfArray = Array.from(this.cpfArray);
+    return this.cpfArray;
   }
 
   criaDigito() {
-    this.novoCpf = this.cpfArray.map(function (ac, valor) {
-      console.log(ac, valor)
-    })
+    let total = 0;
+    let ac = this.cpfArray.length + 1;
+    this.cpfNovo = this.cpfArray.map((valor) => {
+      total += ac * Number(valor);
+      ac--;
+      return total;
+    });
+    total = 11 - (total % 11);
+    total = total > 9 ? 0 : total;
+    total = String(total);
+    this.cpfArray.push(total);
+    return this.cpfArray;
+  }
+
+  valida() {
+    if (this.cpfEnviado === undefined) return "Cpf Invalido";
+    if (this.cpfEnviado === "") return "Cpf Invalido";
+    this.verificaCpf();
+    if (this.cpfEnviado.length !== 11) return "Digitos Insuficientes";
+
+    this.criaDigito();
+    this.criaDigito();
+    this.cpfVerificado = this.cpfArray.join("");
+
+    if (this.cpfVerificado === this.cpfEnviado) {
+      return "CPF Valido!";
+    } else {
+      return "CPF invalido!";
+    }
   }
 }
 
-const cpf = new ValidaCpf('823.698.282-34')
-console.log(cpf)
+const cpf = new ValidaCpf("823.698.282-34");
+console.log(cpf.valida());
 
 //70 Linhas
 
