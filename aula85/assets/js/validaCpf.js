@@ -30,20 +30,16 @@ class ValidaCpf {
   }
 
   valida() {
-    if (this.cpfEnviado === undefined) return "Cpf Invalido";
-    if (this.cpfEnviado === "") return "Cpf Invalido";
+    if (this.cpfEnviado === undefined) return false;
+    if (this.cpfEnviado === "") return false;
     this.verificaCpf();
-    if (this.cpfEnviado.length !== 11) return "Digitos Insuficientes";
+    if (this.cpfEnviado.length !== 11) return false;
 
     this.criaDigito();
     this.criaDigito();
     this.cpfVerificado = this.cpfArray.join("");
 
-    if (this.cpfVerificado === this.cpfEnviado) {
-      return "CPF Valido!";
-    } else {
-      return "CPF invalido!";
-    }
+    return this.cpfVerificado === this.cpfEnviado;
   }
 }
 
