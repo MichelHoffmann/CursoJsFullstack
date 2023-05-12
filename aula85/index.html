@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Modelo</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Modelo</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-</head>
+  <body>
+    <section class="container">
+      <h1>Formulario de Cadastro</h1>
+      <ul>
+        <li>Nenhum campo pode estar vazio</li>
+        <li>Usuário só poderá conter letras e/ou números</li>
+        <li>Usuário deverá ter entre 3 e 12 caracteres</li>
+        <li>Senha precisa ter entre 6 e 12 caracteres</li>
+      </ul>
 
-<body>
+      <form action="" class="formulario">
+        <label for="">Nome:</label>
+        <input type="text" name="" id="" class="nome valida" />
+        <label for="">Sobrenome:</label>
+        <input type="text" name="" id="" class="sobrenome valida" />
+        <label for="">CPF:</label>
+        <input type="text" name="" id="" class="cpf valida" />
+        <label for="">Usuário:</label>
+        <input type="text" name="" id="" class="usuario valida" />
+        <label for="">Senha:</label>
+        <input type="password" name="" id="" class="senha valida" />
+        <label for="">Repetir senha:</label>
+        <input type="password" name="" id="" class="repetir-senha valida" />
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
 
-  <section class="container">
-    <h1>Formulario de Cadastro</h1>
-    <ul>
-      <li>Nenhum campo pode estar vazio</li>
-      <li>Usuário só poderá conter letras e/ou números</li>
-      <li>Usuário deverá ter entre 3 e 12 caracteres</li>
-      <li>Senha precisa ter entre 6 e 12 caracteres</li>
-    </ul>
-
-    <form action="" class="formulario">
-      <label for="">Nome:</label>
-      <input type="text" name="" id="" class="nome">
-      <label for="">Sobrenome:</label>
-      <input type="text" name="" id="" class="sobrenome">
-      <label for="">CPF:</label>
-      <input type="text" name="" id="" class="cpf">
-      <label for="">Usuário:</label>
-      <input type="text" name="" id="" class="usuario">
-      <label for="">Senha:</label>
-      <input type="text" name="" id="" class="senha">
-      <label for="">Repetir senha:</label>
-      <input type="text" name="" id="" class="repetir-senha">
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <script src="./assets/js/main.js"></script>
-</body>
-
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/validaCpf.js"></script>
+  </body>
 </html>
